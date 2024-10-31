@@ -14,7 +14,6 @@ let target=5;
 var twoSum = function(nums, target) {
     const hashmap = new Map(); 
     for (let i = 0; i < nums.length; i++) {
-        console.log(hashmap)
         const complement = target - nums[i]; 
         if (hashmap.has(complement)) {
 

@@ -6,7 +6,7 @@
  * @returns {Array} A new array with all occurrences of the specified value removed.
  */
 let nums = [0, 1, 2, 2, 3, 0, 4, 2];
-let val = 0;
+let val = 2;
 
 var removeElement = function (nums, val) {
   let j = 0;
