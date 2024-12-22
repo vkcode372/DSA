@@ -2,34 +2,45 @@
  * @param {number[]} nums
  * @return {number[]}
  */
- const heapify = (nums, n, i) => {
-    let largest = i; 
-    let left = 2 * i + 1; 
-    let right = 2 * i + 2;
+let margeSort = (nums, start, end) => {
+    if (nums.length <= 1) return nums;
+    if (start < end) {
+        let mid = Math.floor(start + (end - start) / 2);
+        margeSort(nums, start, mid);
+        margeSort(nums, mid + 1, end);
+        marge(nums, start, mid, end);
+    }
+};
 
-    if (left < n && nums[largest] < nums[left]) {
-        largest = left;
+let marge = (nums, start, mid, end) => {
+    let i = start,
+        j = mid + 1,
+        result = [];
+
+    while (i <= mid && j <= end) {
+        if (nums[i] <= nums[j]) {
+            result.push(nums[i]);
+            i++;
+        } else {
+            result.push(nums[j]);
+            j++;
+        }
+    }
+    while (i <= mid) {
+        result.push(nums[i]);
+        i++;
+    }
+    while (j <= end) {
+        result.push(nums[j]);
+        j++;
     }
 
-    if (right < n && nums[largest] < nums[right]) {
-        largest = right;
-    }
-
-    if (largest !== i) {
-        [nums[largest], nums[i]] = [nums[i], nums[largest]]; 
-        heapify(nums, n, largest); 
+    // Copy sorted result back to the original array at the correct position
+    for (let k = 0; k < result.length; k++) {
+        nums[start + k] = result[k];
     }
 };
 var sortArray = function(nums) {
-    let n = nums.length;
-
-    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
-        heapify(nums, n, i);
-    }
-
-    for (let size = n - 1; size > 0; size--) {
-        [nums[0], nums[size]] = [nums[size], nums[0]];
-        heapify(nums, size, 0);
-    }
+    margeSort(nums, 0, nums.length - 1);
     return nums;
 };
