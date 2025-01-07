@@ -35,18 +35,17 @@ const heapify = (arr, n, i) => {
  */
 const heapSort = (arr) => {
     let n = arr.length;
-
     for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
         heapify(arr, n, i);
     }
 
-    for (let size = n - 1; size > 0; size--) {
+    for(let size = n - 1; size > 0; size--) {
         [arr[0], arr[size]] = [arr[size], arr[0]];
         heapify(arr, size, 0);
     }
 };
 
 // Example usage:
-let arr = [5,2,3,1]; 
+let arr = [24,5,2,1,0,78]; 
 heapSort(arr);
 console.log(arr);

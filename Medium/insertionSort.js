@@ -8,8 +8,9 @@ function insertionSort(arr){
         }
         arr[j + 1] = current;
     }
+ 
     return arr;
 }
 
-console.log(insertionSort([10,4, 2, 5, 1, 3, 6]))
+console.log(insertionSort([10,4, 2, 5]))
 
